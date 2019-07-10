@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
+        <title>
+            {% block title %}
+                {{page_title_home}}
+            {% endblock %}
+        </title>
+        <link rel="icon" href="{{ asset('build/images/favicon.ico')}}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('build/images/favicon.ico')}}" type="image/x-icon">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+
+    <body class="main-bg img-bg" style="background-image: url({{ asset('build/images/bg/'~random(bg_login))}}">
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

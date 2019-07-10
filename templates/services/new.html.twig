@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{page_title_base}}{{page_info.title}}
+{% endblock %}
+{% block breadcrumb %}
+    {% embed 'layouts/breadcrumb.html.twig' %}{% endembed %}
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper wrapper-content animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Crear Destino</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                        {{ form_start(form) }}
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Tipo de Destino</label>
+        <div class="col-sm-3">
+            {{ form_widget(form.categoryid, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Capacidad</label>
+        <div class="col-sm-4">{{ form_widget(form.passengers_capacity, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Fecha y hora</label>
+        <div class="col-sm-4">{{ form_widget(form.time_and_date, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Origen</label>
+        <div class="col-sm-4">{{ form_widget(form.origin, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+
+
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Destino</label>
+        <div class="col-sm-4">{{ form_widget(form.destination, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Servicios adicionales</label>
+        <div class="col-sm-4">{{ form_widget(form.aditional_services, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Observaciones</label>
+        <div class="col-sm-4">{{ form_widget(form.additional_observations, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Subcuenta del servicio</label>
+        <div class="col-sm-4">{{ form_widget(form.service_sub_account_type, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Tarifa fija</label>
+        <div class="col-sm-4">{{ form_widget(form.fixed_fee, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+
+
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Tarifa fija tarjeta</label>
+        <div class="col-sm-4">{{ form_widget(form.card_fixed_fee, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+        {#
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-4">{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+ #}
+
+    <div class="hr-line-dashed"></div>
+    <div class="form-group row">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a href="{{ path('destinations_list') }}" class="btn btn-white btn-sm" role="button">Cancelar</a>
+            <button class="btn btn-primary btn-sm">Guardar</button>
+        </div>
+    </div>
+{{ form_end(form) }}
+
+                        {#% embed 'destinations/_form.html.twig' %}{% endembed %#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+
+        $('#services_categoryid').change(function () {
+            var categoryselected = $(this);
+
+            // Request the neighborhoods of the selected city.
+            $.ajax({
+                url: "{{ path('find_origin_and_destination') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    id: categoryselected.val()
+                },
+                success: function (municipios) {
+                    var originSelect = $("#services_origin");
+
+                    // Remove current options
+                    originSelect.html('');
+
+                    // Empty value ...
+                    originSelect.append('<option value> Seleccione origen de ' + categoryselected.find("option:selected").text() + ' ...</option>');
+
+
+                    $.each(municipios, function (key, origin) {
+                        originSelect.append('<option value="' + origin.id + '">' + origin.name + '</option>');
+                    });
+
+
+
+                    var destinationSelect = $("#services_destination");
+
+                    // Remove current options
+                    destinationSelect.html('');
+
+                    // Empty value ...
+                    destinationSelect.append('<option value> Seleccione destino de ' + categoryselected.find("option:selected").text() + ' ...</option>');
+
+
+                    $.each(municipios, function (key, destination) {
+                        destinationSelect.append('<option value="' + destination.id + '">' + destination.name + '</option>');
+                    });
+                },
+
+
+
+                error: function (err) {
+                    alert("An error ocurred while loading data ...");
+                }
+            });
+        });
+    </script>
+    {% endblock %}

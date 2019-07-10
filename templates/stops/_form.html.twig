@@ -1,0 +1,51 @@
+{{ form_start(form) }}
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Destino</label>
+        <div class="col-sm-3">
+            {{ form_widget(form.destination, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-4">{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Clave</label>
+        <div class="col-sm-4">{{ form_widget(form.keyname, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Direccion</label>
+        <div class="col-sm-4">{{ form_widget(form.address, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Orden</label>
+        <div class="col-sm-4">{{ form_widget(form.position, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Tiempo</label>
+        <div class="col-sm-4">{{ form_widget(form.time_trip, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Tarifa</label>
+        <div class="col-sm-4">{{ form_widget(form.price, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Tarifa Tarjeta</label>
+        <div class="col-sm-4">{{ form_widget(form.price_card, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Compra Online</label>
+        <div class="col-sm-4">{{ form_widget(form.buy_online, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Punto Fijo</label>
+        <div class="col-sm-4">{{ form_widget(form.fixed_point, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    <div class="form-group row">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a href="{{ path('stops_list') }}" class="btn btn-white btn-sm" role="button">Cancelar</a>
+            <button class="btn btn-primary btn-sm">Guardar</button>
+        </div>
+    </div>
+{{ form_end(form) }}

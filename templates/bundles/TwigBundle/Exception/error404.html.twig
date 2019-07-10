@@ -1,0 +1,11 @@
+{% extends "bundles/TwigBundle/layout.html.twig" %}
+{% block title %} {{page_title_base}} Error 404{% endblock %}
+{% block body %}
+    <div class="middle-box text-white text-center animated fadeInDown">
+        <h1>404</h1>
+        <h3 class="font-bold">Ups! Page Not Found</h3>
+        <div class="error-desc">
+            <a href="{{ path('dashboard') }}" class="btn btn-primary m-t"><i class="fa fa-home"></i> Principal</a>
+        </div>
+    </div>
+{% endblock %}

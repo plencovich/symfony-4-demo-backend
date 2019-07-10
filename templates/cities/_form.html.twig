@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-4">{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="form-group  row">
+        <label class="col-sm-2 col-form-label">Código Postal</label>
+        <div class="col-sm-4">{{ form_widget(form.codpos, { 'attr': {'class': 'form-control'} }) }}</div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    <div class="form-group row">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a href="{{ path('cities_list') }}" class="btn btn-white btn-sm" role="button">Cancelar</a>
+            <button class="btn btn-primary btn-sm">Guardar</button>
+        </div>
+    </div>
+{{ form_end(form) }}

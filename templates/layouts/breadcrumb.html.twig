@@ -1,0 +1,21 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <h2>{{page_info.title}}</h2>
+        <ol class="breadcrumb">
+            {% for bLink,bLabel in page_info.breadcrumb %}
+                <li class="breadcrumb-item">
+                {% if bLink != 'none' %}
+                    <a href="{{ bLink }}">{{ bLabel }}</a>
+                {% else %}
+                    <strong>{{ bLabel }}</strong>
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="title-action">
+            {% block btnBreadcrumb %}{% endblock %}
+        </div>
+    </div>
+</div>

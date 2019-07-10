@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+
+        <title>
+            {% block title %}
+                {{page_title_base}}
+            {% endblock %}
+        </title>
+        <link rel="icon" href="{{ asset('build/images/favicon.ico')}}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('build/images/favicon.ico')}}" type="image/x-icon">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="wrapper">
+            {% embed 'layouts/sidebar.html.twig' %}{% endembed %}
+
+            <div class="gray-bg dashbard-1" id="page-wrapper">
+                <div class="row border-bottom">
+                    {% embed 'layouts/topbar.html.twig' %}{% endembed %}
+                </div>
+                {% block breadcrumb %}{% endblock %}
+                {% block body %}{% endblock %}
+
+                <div class="footer">
+                    <div class="pull-left">{{footer_version}}</div>
+                </div>
+            </div>
+        </div>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

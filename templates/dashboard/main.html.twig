@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{page_title_base}} Dashboard{% endblock %}
+{% block body %}
+    <div class="row border-bottom white-bg dashboard-header">
+        <div class="col-md-6">
+            <h2>Bienvenido {{app.user.FullName}} [{% trans %}ROLE_ADMIN{% endtrans %}]</h2> <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ducimus!</small>
+        </div>
+    </div>
+{% endblock %}

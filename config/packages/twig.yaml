@@ -1,0 +1,9 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        page_title_home: '%env(OWNER_PROJECT_NAME)% - %env(PROJECT_NAME)%'
+        page_title_base: '%env(OWNER_PROJECT_NAME)% - '
+        footer_version: '%env(FOOTER_VERSION)%'
+        bg_login: ['login01.jpg','login02.jpg']

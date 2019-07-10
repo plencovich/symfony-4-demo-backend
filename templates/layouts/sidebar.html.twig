@@ -1,0 +1,58 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <img alt="image" class="img-fluid" src="{{ asset('build/images/grupotodo-logo-white.png')}}"/>
+                </div>
+                <div class="logo-element">
+                    GP
+                </div>
+            </li>
+            <li>
+                <a href="{{path ('dashboard')}}">
+                    <i class="fa fa-th-large"></i>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+            </li>
+            {% if is_granted('ROLE_ADMIN')%}
+            <li>
+                <a href="{{path ('services_list')}}">
+                    <i class="fa fa-list"></i>
+                    <span class="nav-label">Servicios</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-cogs"></i>
+                    <span class="nav-label">Configuración</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li>
+                        <a href="{{path ('cities_list')}}">
+                            <i class="fa fa-list fa-fw nav-label"></i>Ciudades
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{path ('destinations_list')}}">
+                            <i class="fa fa-list fa-fw nav-label"></i>Destinos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{path ('stops_list')}}">
+                            <i class="fa fa-list fa-fw nav-label"></i>Paradas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{path ('users_list')}}">
+                            <i class="fa fa-user fa-fw nav-label"></i>Usuarios
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {%endif%}
+        </ul>
+
+    </div>
+</nav>

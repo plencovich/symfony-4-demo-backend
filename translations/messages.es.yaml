@@ -1,0 +1,10 @@
+#translations/global.es.yaml
+
+#Usuarios:
+ROLE_SUPER_ADMIN: Admin Master
+ROLE_ADMIN: Administrador
+ROLE_AGENCIA: Agencia
+ROLE_OPERADOR: Operador
+ROLE_CHOFERES: Chofer
+ROLE_USER: Usuario
+ROLE_CLIENTE: Cliente

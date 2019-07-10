@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{page_title_base}}{{page_info.title}}
+{% endblock %}
+{% block breadcrumb %}
+    {% embed 'layouts/breadcrumb.html.twig' %}{% endembed %}
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper wrapper-content animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Editar destino</h5>
+                        <div class="ibox-tools">
+                            <button class="btn btn-danger btn-xs float-right deleteItem" data-method="DELETE" data-token="{{ csrf_token('delete' ~ destination.id) }}" data-action="{{ path('destinations_delete', {'id': destination.id}) }}">{{ button_label|default('Borrar') }}</button>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                    {% embed 'destinations/_form.html.twig' %}{% endembed %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
